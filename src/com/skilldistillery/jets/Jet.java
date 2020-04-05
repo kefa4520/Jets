@@ -1,5 +1,145 @@
 package com.skilldistillery.jets;
 
-public abstract class Jet {
+public class Jet {
+	private String model;
+	private String name;
+	private double speed;
+	private int range;
+	private long price;
+	private double speedInMach;
+	private int flightTime;
+	
+	
+	public Jet() {
+		super();
+	}
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Jet(String model, String name, double speed, int range, long price) {
+		this.model = model;
+		this.name = name;
+		this.speed = speed;
+		this.range = range;
+		this.price = price;
+	}
+	
+	public Jet(double speed, int range, long price) {
+		this.model = "Drone";
+		this.name = "MQ-9 Reaper";
+		this.speed = speed;
+		this.range = range;
+		this.price = price;
+	}
+	
+	
+	public void fly() {
+//		this.flightTime = this.range/(int)this.speed;
+//		System.out.println(this);
+	}
+	
+	public double getSpeedInMach() {
+		
+		return speedInMach;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public double getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+
+	public int getRange() {
+		return range;
+	}
+
+	public void setRange(int range) {
+		this.range = range;
+	}
+
+	public long getPrice() {
+		return price;
+	}
+
+	public void setPrice(long price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		
+		return "Jet [model=" + model + ", name=" + name + ", speed=" + speed + ", range=" + range + ", price=" + price
+				+ ", speedInMach=" + speedInMach + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + flightTime;
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + (int) (price ^ (price >>> 32));
+		result = prime * result + range;
+		long temp;
+		temp = Double.doubleToLongBits(speed);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(speedInMach);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Jet other = (Jet) obj;
+		if (flightTime != other.flightTime)
+			return false;
+		if (model == null) {
+			if (other.model != null)
+				return false;
+		} else if (!model.equals(other.model))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (price != other.price)
+			return false;
+		if (range != other.range)
+			return false;
+		if (Double.doubleToLongBits(speed) != Double.doubleToLongBits(other.speed))
+			return false;
+		if (Double.doubleToLongBits(speedInMach) != Double.doubleToLongBits(other.speedInMach))
+			return false;
+		return true;
+	}
+
+	
+	
+	
 
 }
