@@ -17,7 +17,7 @@ public class Ishani extends Jet implements RacingAircraft {
 public void fly() {
 		super.fly();
 		this.flightTime = Math.round((super.getRange()/super.getSpeed())*100.0)/100.0;
-		System.out.println(super.toString() + "\nFly fast, Fly high. I can fly for " +flightTime);
+		System.out.println(super.toString() + "\nFly fast, Fly high. I can fly for " +flightTime+"hrs");
 	}
 
 }

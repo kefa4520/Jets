@@ -7,111 +7,92 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class AirField {
 	private List<Jet> jets;
-    Scanner sc = new Scanner(System.in);
-    
+	Scanner sc = new Scanner(System.in);
+
 	public AirField(String jetFile) {
 		jets = readFromText(jetFile);
 	}
 
 	public void displayJets() {
 		for (Jet jet : jets) {
-		    if (jet != null) {
-		System.out.println(jet);
-		    }
-		}
-	
-	}
-	public void loadDusty() {
-		for(int i= 0; i <jets.size(); i++) {
-			     if (jets.get(i) instanceof DustyCrophopper) { // 
-				((DustyCrophopper) jets.get(i)).cropdusting();    //((DustyCrophopper) jets).cropdusting();	
+			if (jet != null) {
+				System.out.println(jet);
 			}
 		}
-	
+
 	}
-	
+
+	public void loadDusty() {
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i) instanceof DustyCrophopper) { 
+				((DustyCrophopper) jets.get(i)).cropdusting();
+			}
+		}
+
+	}
+
 	public void raceIshani() {
-		for(int i= 0; i <jets.size(); i++) {
+		for (int i = 0; i < jets.size(); i++) {
 			if (jets.get(i) instanceof Ishani) {
 				((Ishani) jets.get(i)).race();
-				
+
 			}
 		}
 	}
 
 	public void flyJets() {
 		for (int i = 0; i < jets.size(); i++) {
-//			if (jets instanceof DustyCrophopper) {
-//				((DustyCrophopper) jets).fly();
-//			}
-//			if (jets instanceof Ishani) {
-//				((Ishani) jets).fly();
-//			}
-//			if (jets instanceof JetImpl) {
-//				((JetImpl) jets).fly();
-//			}
 			jets.get(i).fly();
 		}
 
 	}
+
 	public void fastestJet() {
 		Jet compare = jets.get(0);
 		double fastest = jets.get(0).getSpeed();
-		for (int i=0; i<jets.size(); i++) {
-			if(jets.get(i)!=null) {
-				if(fastest < jets.get(i).getSpeed()) {
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i) != null) {
+				if (fastest < jets.get(i).getSpeed()) {
 					fastest = jets.get(i).getSpeed();
 					compare = jets.get(i);
 				}
 			}
-		} System.out.println("The following jet has the fastest speed: " + compare.toString());
+		}
+		System.out.println("The following jet has the fastest speed: " + compare.toString());
 		System.out.println();
 	}
-	
+
 	public void longestRange() {
 		Jet letsCompare = jets.get(0);
 		int longest = jets.get(0).getRange();
-		for (int i=0; i<jets.size(); i++) {
-			if(jets.get(i)!=null) {
-				if(longest < jets.get(i).getRange()) {
-				   longest = jets.get(i).getRange();
-				   letsCompare = jets.get(i);
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i) != null) {
+				if (longest < jets.get(i).getRange()) {
+					longest = jets.get(i).getRange();
+					letsCompare = jets.get(i);
 				}
 			}
-		}System.out.println("Jet with the longest range is: " + letsCompare.toString());
+		}
+		System.out.println("Jet with the longest range is: " + letsCompare.toString());
 		System.out.println();
 	}
-		
-		
-		
-		
-		
-		
-//			Double max = (Double)jets.get(3);
-//			Jet compare = 
-//			for (int i =0; i<jets.size(); i++) {
-//		}
-	
-		
 
 	public void removeJet() {
-		
+
 		int counter = -1;
 		for (Jet jet : jets) {
 			counter++;
-			System.out.println(counter + " " +jet);
-		} 
-			System.out.println("Pick a number of the jet you would like to remove");
-			int option = sc.nextInt();
-		    jets.remove(option);
-		    System.out.println("Heres the updated list");
-		    displayJets();
-		
+			System.out.println(counter + " " + jet);
+		}
+		System.out.println("Pick a number of the jet you would like to remove");
+		int option = sc.nextInt();
+		jets.remove(option);
+		System.out.println("Here's the updated list");
+		displayJets();
+
 	}
-	
 
 	private List<Jet> readFromText(String jetFile) {
 		List<Jet> jets = new ArrayList<>();
@@ -126,19 +107,18 @@ public class AirField {
 				long price = Long.parseLong(jetRecord[4]);
 
 				if (model.equals("DustyCrophopper")) {
-					
+
 					jets.add(new DustyCrophopper(model, name, speed, range, price));
 				}
 				if (model.equals("Ishani")) {
-					Jet racer = new Ishani(model, name, speed, range, price);
-					jets.add(racer);
+
+					jets.add(new Ishani(model, name, speed, range, price));
 				}
 				if (model.equals("Drone")) {
-                    Jet j = new Jet(model, name, speed, range, price);
-				// System.out.println(j);
-				    jets.add(j);
-				}
 				
+					jets.add(new Jet(model, name, speed, range, price));
+				}
+
 				else {
 					continue;
 				}
@@ -149,7 +129,9 @@ public class AirField {
 		return jets;
 	}
 
-	public void addJets() { //Jet newJet
+	public void addJets() { 
+		System.out.println("Enter your drone's model: ");
+		String model = sc.nextLine();
 		System.out.println("Enter speed in MPH: ");
 		double speed = sc.nextDouble();
 		System.out.println("Enter range distance in miles: ");
@@ -157,9 +139,9 @@ public class AirField {
 		System.out.println("Enter price in $: ");
 		long price = sc.nextLong();
 		sc.nextLine();
-		
-		Jet jetByUser = new JetImpl(speed, range, price);
+
+		Jet jetByUser = new JetImpl(model, speed, range, price);
 		jets.add(jetByUser);
-		
+
 	}
 }

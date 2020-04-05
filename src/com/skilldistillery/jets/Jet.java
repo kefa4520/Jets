@@ -6,8 +6,6 @@ public class Jet {
 	private double speed;
 	private int range;
 	private long price;
-	private double speedInMach;
-	private int flightTime;
 	
 	
 	public Jet() {
@@ -31,9 +29,9 @@ public class Jet {
 		this.price = price;
 	}
 	
-	public Jet(double speed, int range, long price) {
-		this.model = "Drone";
-		this.name = "MQ-9 Reaper";
+	public Jet(String model, double speed, int range, long price) {
+		this.model = model;
+		this.name = "Drone";
 		this.speed = speed;
 		this.range = range;
 		this.price = price;
@@ -41,14 +39,9 @@ public class Jet {
 	
 	
 	public void fly() {
-//		this.flightTime = this.range/(int)this.speed;
-//		System.out.println(this);
+
 	}
 	
-	public double getSpeedInMach() {
-		
-		return speedInMach;
-	}
 
 	public String getModel() {
 		return model;
@@ -85,61 +78,8 @@ public class Jet {
 	@Override
 	public String toString() {
 		
-		return "Jet [model=" + model + ", name=" + name + ", speed=" + speed + ", range=" + range + ", price=" + price
-				+ ", speedInMach=" + speedInMach + "]";
+		return "Jet [model: " + model + ", name: " + name + ", speed: " + speed + ", range: " + range + ", price: " + price
+				+ "$]";
 	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + flightTime;
-		result = prime * result + ((model == null) ? 0 : model.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int) (price ^ (price >>> 32));
-		result = prime * result + range;
-		long temp;
-		temp = Double.doubleToLongBits(speed);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(speedInMach);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Jet other = (Jet) obj;
-		if (flightTime != other.flightTime)
-			return false;
-		if (model == null) {
-			if (other.model != null)
-				return false;
-		} else if (!model.equals(other.model))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (price != other.price)
-			return false;
-		if (range != other.range)
-			return false;
-		if (Double.doubleToLongBits(speed) != Double.doubleToLongBits(other.speed))
-			return false;
-		if (Double.doubleToLongBits(speedInMach) != Double.doubleToLongBits(other.speedInMach))
-			return false;
-		return true;
-	}
-
-	
-	
-	
 
 }
