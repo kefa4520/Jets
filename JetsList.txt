@@ -3,4 +3,4 @@ DustyCrophopper, AeroCanard, 300, 600, 200000
 Ishani, SharpNemesis, 390, 600, 190000
 Ishani, MonnettSonerai, 420, 500, 210000
 Ishani, Mace-Trefethen, 480, 550, 220000
-Drone, Predator, 135, 777, 4000000
+Predator, Drone, 135, 777, 4000000

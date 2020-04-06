@@ -114,7 +114,7 @@ public class AirField {
 
 					jets.add(new Ishani(model, name, speed, range, price));
 				}
-				if (model.equals("Drone")) {
+				if (model.equals("Predator")) {
 				
 					jets.add(new Jet(model, name, speed, range, price));
 				}

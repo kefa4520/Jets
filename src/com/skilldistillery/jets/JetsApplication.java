@@ -28,9 +28,7 @@ public class JetsApplication {
 
 			option = sc.nextInt();
 			sc.nextLine();
-//			if (option == 9) {
-//				break;
-//			}
+
 			if (option == 1) {
 				airField.displayJets();
 
